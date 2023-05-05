@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
-import fs from 'fs';
+import fs from "fs";
 import allPlayLists from "./data.js";
+import delDocs from "./delete.js";
 // creating connection and new database if it does not present in mongodb
 
 mongoose
@@ -200,28 +201,61 @@ insetDocs(allPlayLists);
 
 // !-------------------> Read operation ------------->
 
-const readDoc =async()=>{
+// const readDoc =async()=>{
 
- try{
-  // const data = await model.find({type : "Front-end"},{name:1,_id:0}); print the data of fronent 
-  // print the course name which is having video count greater than 14
-  // const data = await model.find({videos:{$gt : 14}},{name:1,_id:0,videos:1})
-  // print the course name which is having video count greater than 11
-  // const data = await model.find({videos:{$lt:11}},{name:1,_id:0,videos:1})
-  // print the course name which is having video count greater than  equalto 11
-  // const data = await model.find({videos:{$lte:11}},{name:1,_id:0,videos:1})
-  // print the course name which having type backend and database
-  // const data = await model.find({type :{$in:["Database","Back-end"]}})
-  // print this type of cocurse name which does not backend and database
-  // const data = await model.find({type:{$nin:["Back-end","Database"]}},{name:1,_id:0})
-  console.log(chalk.inverse.yellow(data));
- } catch(err){
-  console.log(chalk.red.inverse(err));
- }
- 
-}
+//  try{
+//   // const data = await model.find({type : "Front-end"},{name:1,_id:0}); print the data of fronent
+//   // print the course name which is having video count greater than 14
+//   // const data = await model.find({videos:{$gt : 14}},{name:1,_id:0,videos:1})
+//   // print the course name which is having video count greater than 11
+//   // const data = await model.find({videos:{$lt:11}},{name:1,_id:0,videos:1})
+//   // print the course name which is having video count greater than  equalto 11
+//   // const data = await model.find({videos:{$lte:11}},{name:1,_id:0,videos:1})
+//   // print the course name which having type backend and database
+//   // const data = await model.find({type :{$in:["Database","Back-end"]}})
+//   // print this type of cocurse name which does not backend and database
+//   // const data = await model.find({type:{$nin:["Back-end","Database"]}},{name:1,_id:0})
+//   // print that course name which author name is sakil or type is backend
+//   // const data = await model.find({$or:[{type:"Back-end"},{author:"Js wallah"}]},{name:1,_id:0});
+//   // print that course name which author namse is js wallh and type is backend
+//   // const data= await model.find({$and : [{type:"Back-end"},{author : "Js wallah"}]},{name : 1,_id:0})
+//   // now we need count of it
+//   // const data= await model.find({$or : [{type:"Back-end"},{author : "Js wallah"}]},{name : 1,_id:0}).countDocuments();
+//   // now we will sort it
+//   // const data= await model.find({$or : [{type:"Back-end"},{author : "Js wallah"}]},{name : 1,_id:0}).sort();
+//   // by default it will provide data just like i have created
+//   // Ascending order--->
+//   // const data= await model.find({$or : [{type:"Back-end"},{author : "Js wallah"}]},{name : 1,_id:0}).sort({"name":1});
 
-readDoc()
+//   console.log(chalk.inverse.yellow(data));
+//  } catch(err){
+//   console.log(chalk.red.inverse(err));
+//  }
 
-// search a playlists where video is greater than 10;
+// }
+
+// readDoc()
+
+// todo ==============start code=========>
+
+// upadate the documents=============>
+
+// const updateDoc =async ()=>{
+//   try{
+//     const upres = await model.updateMany({author: "Js wallah"}, {$set:{author : "Js Wallah"}})
+//     console.log(upres);
+//   }catch (err){
+//     console.log(err)
+//   }
+
+// }
+
+// updateDoc();
+
+
+
+// fs.writeFile("delete.js","delete the documents",(err)=>console.log(chalk.green("File created")))
+
+// delDocs(model);
+// 
 
