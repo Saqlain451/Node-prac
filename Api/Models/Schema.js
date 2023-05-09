@@ -25,4 +25,4 @@ const studentSchema = new mongoose.Schema({
 
 const Student = new mongoose.model("Student",studentSchema)
 
-export {Student}
+export {Student} 
