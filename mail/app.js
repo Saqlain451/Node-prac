@@ -1,15 +1,17 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import mongoConnect from "./db/Connect.js";
+import mailRouter from "./Routes/mailRoutes.js";
 
+dotenv.config();
 const app = express();
+const mongoUri = process.env.MONGO_URI;
+const port = process.env.PORT;
 
-app.get("/",async (req,res)=>{
-    try {
-        res.json({msg : "This is Home page of server"});
-    }catch (e){
-        console.log(e)
-    }
-})
+app.use(express.json());
+mongoConnect(mongoUri);
+app.use(mailRouter)
 
-app.listen(4000,()=>{
+app.listen(port, () => {
     console.log("Server is working at port 4000");
 })

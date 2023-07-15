@@ -2,3 +2,5 @@
 /3_nodemon/node_modules/
 /Mongoose/node_modules/
 /Api/node_modules/
+/mail/node_modules/
+/mail/.env
