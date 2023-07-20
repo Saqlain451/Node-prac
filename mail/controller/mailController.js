@@ -1,29 +1,29 @@
-import nodemailer from 'nodemailer';
+import {Resend} from "resend";
+import mail from "../model/mailModel.js";
+import dotenv from "dotenv";
 
+dotenv.config();
+const resend = new Resend(process.env.API_KEY);
 const sendMail = async (req, res) => {
+    const {email, subject, msg, name} = req.body
+
     try {
-        const transport = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
-            auth: {
-                user: 'willis45@ethereal.email',
-                pass: 'En2J918GfxkMVnz76R'
-            }
-        })
 
         const mailOption = {
-            from: "saqlainmustaq783@gmail.com",
-            to: "jobs.sakil.mustak@gmail.com",
-            subject: 'This is a test email',
-            text: 'This is the body of the email.',
+            from: 'onboarding@resend.dev',
+            to: "saqlainmustaq783@gmail.com",
+            subject: subject,
+            html: `<Strong> Name : </Strong> ${name} <p></p> <Strong> Mail Id : </Strong> ${email} <br/> <Strong> Msg : </Strong> ${msg}`
         }
 
-        const info = await transport.sendMail({...mailOption});
+        await resend.emails.send(mailOption);
 
-        res.status(201).json({msg: info});
+        res.status(201).json({msg: "Your massage has been sent"});
+        const newData = new mail({...req.body});
+        await newData.save();
 
     } catch (err) {
-        console.error(err)
+        res.status(401).json({err: "Have an error! We cant send the data"});
     }
 }
 
